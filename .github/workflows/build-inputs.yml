@@ -8,14 +8,15 @@ on:
       board:
         description: 'board'
         required: true
+        default: 'nice_nano_v2'
       shield:
         description: 'shield'
         required: false
-        default: 'default'
+        default: 'corne_left nice_view_adapter nice_view,corne_right nice_view_adapter nice_view'
       alphas:
         description: 'alphas'
         required: false
-        default: 'default'
+        default: 'QWERTY'
         type: choice
         options:
         - "default"
@@ -31,7 +32,7 @@ on:
       nav:
         description: 'nav'
         required: false
-        default: 'default'
+        default: 'vi'
         type: choice
         options:
         - "default"
@@ -56,7 +57,7 @@ on:
       kconfig:
         description: 'kconfig'
         required: false
-        default: 'default'
+        default: 'CONFIG_ZMK_DISPLAY=y CONFIG_ZMK_SLEEP=y'
       branches:
         description: 'branches'
         required: false
