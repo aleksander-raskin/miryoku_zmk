@@ -4,3 +4,49 @@
 #include "../miryoku/custom_config.h"
 #include "../miryoku/mapping/42/corne.h"
 #include "../miryoku/miryoku.dtsi"
+
+// Mouse settings - faster & smoother
+&mmv {
+    time-to-max-speed-ms = <400>;
+    acceleration-exponent = <1>;
+};
+
+&msc {
+    time-to-max-speed-ms = <300>;
+    acceleration-exponent = <0>;
+};
+
+// App switcher (Cmd+Tab) - hold TAB layer key (32), press T (4) to cycle
+// Browser tab switcher (Ctrl+Tab) - hold 32, press R (3) forward, E (2) backward
+// Close tab (Cmd+W) - hold 32, press W (1)
+/ {
+    behaviors {
+        swapper: swapper {
+            compatible = "zmk,behavior-tri-state";
+            label = "SWAPPER";
+            #binding-cells = <0>;
+            bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+            ignored-key-positions = <4 12 17>;  // 4=T to cycle, 12/17=Shift for reverse
+        };
+        tabber: tabber {
+            compatible = "zmk,behavior-tri-state";
+            label = "TABBER";
+            #binding-cells = <0>;
+            bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+            ignored-key-positions = <2 3>;  // 2=backward, 3=forward (both keep Ctrl held)
+        };
+    };
+
+    macros {
+        close_tab: close_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(W)>;
+        };
+        tab_prev: tab_prev {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(TAB))>;
+        };
+    };
+};

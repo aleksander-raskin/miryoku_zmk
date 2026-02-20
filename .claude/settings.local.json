@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source /Users/raskin/.virtualenvs/zmk/bin/activate)",
+      "Bash(west update)",
+      "Bash(west build -b nice_nano_v2 -d build/left --pristine -- -DSHIELD=\"corne_left nice_view_adapter nice_view\" -DZMK_CONFIG=\"/Users/raskin/Projects/miryoku_zmk/config\" -DCONFIG_ZMK_STUDIO=n -DCONFIG_ZMK_WIDGET_WPM_STATUS=n -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=300000 -DCONFIG_ZMK_POINTING=y)",
+      "Bash(west build -b nice_nano_v2 -d build/right --pristine -- -DSHIELD=\"corne_right nice_view_adapter nice_view\" -DZMK_CONFIG=\"/Users/raskin/Projects/miryoku_zmk/config\" -DCONFIG_ZMK_STUDIO=n -DCONFIG_ZMK_WIDGET_WPM_STATUS=n -DCONFIG_ZMK_SLEEP=y -DCONFIG_ZMK_IDLE_SLEEP_TIMEOUT=300000 -DCONFIG_ZMK_POINTING=y)"
+    ]
+  }
+}
