@@ -98,6 +98,31 @@ west build -b nice_nano_v2 -d build/right --pristine -- \
 - `CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000` - 15 min sleep timeout
 - `CONFIG_ZMK_POINTING=y` - Enable mouse keys
 
+### Quick-Tap Layer-Tap (Thumb Keys)
+
+Tap-then-hold within 200ms to repeat the key instead of activating layer:
+
+| Key | Tap | Hold | Tap+Hold |
+|-----|-----|------|----------|
+| 31 SPACE | Space | Nav layer | Repeat Space |
+| 32 TAB | Tab | Mouse layer | Repeat Tab |
+| 33 RET | Enter | Sym layer | Repeat Enter |
+| 34 BSPC | Backspace | Num layer | Repeat Backspace |
+
+Defined in `config/corne.keymap`:
+
+```c
+qt_lt: quick_tap_layer_tap {
+    compatible = "zmk,behavior-hold-tap";
+    label = "QT_LT";
+    #binding-cells = <2>;
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <200>;  // Tap then hold within 200ms = repeat key
+    bindings = <&mo>, <&kp>;
+};
+```
+
 ### App & Tab Switching (Mouse Layer)
 
 Hold TAB (position 32) to enter Mouse layer, then use top row for switching:

@@ -35,6 +35,17 @@
             bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
             ignored-key-positions = <2 3>;  // 2=backward, 3=forward (both keep Ctrl held)
         };
+        // Tap: key | Hold: layer | Quick-tap+hold: repeat key
+        // Used for SPACE(Nav), TAB(Mouse), RET(Sym), BSPC(Num)
+        qt_lt: quick_tap_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "QT_LT";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;  // Tap then hold within 200ms = repeat key
+            bindings = <&mo>, <&kp>;
+        };
     };
 
     macros {
