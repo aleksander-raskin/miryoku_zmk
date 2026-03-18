@@ -1,0 +1,14 @@
+# Copyright 2024 Manna Harbour
+# https://github.com/manna-harbour/miryoku
+
+name: 'Build Example KeyPeek'
+on: workflow_dispatch
+jobs:
+  build:
+    uses: ./.github/workflows/main.yml
+    secrets: inherit
+    with:
+      board: '["nice_nano"]'
+      shield: '["corne_left raw_hid_adapter","corne_right raw_hid_adapter"]'
+      kconfig: '["CONFIG_RAW_HID=y\nCONFIG_ZMK_STUDIO=y"]'
+      modules: '["zzeneg/zmk-raw-hid/main srwi/zmk-keypeek-layer-notifier/master"]'

@@ -25,6 +25,7 @@ The [[#keyboard-keymaps][keyboard keymaps]] are composed of the config file, a [
 [[#double-tap-boot][double tap boot]],
 [[#global-shift-functions][global shift functions]],
 [[#key-emulation-combos][key emulation combos]],
+[[#keypeek][KeyPeek]],
 [[#mouse-keys][mouse keys]],
 [[#soft-off][soft off]],
 [[#tap-delay][tap delay]],
@@ -564,6 +565,21 @@ Requires ~CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY=16~ [[#kconfig-configuration][Kcon
 **** Thumb Combos
 
 On each hand, combo the primary and secondary thumb keys to emulate the tertiary thumb key.  Requires suitable keycaps to enable the thumb to press both keys simultaneously.
+
+
+*** KeyPeek
+
+[[https://github.com/srwi/keypeek][KeyPeek]] displays a live on-screen keyboard overlay showing active keyboard layers in real time.
+
+To build with KeyPeek support, add the ~raw_hid_adapter~ shield, ~CONFIG_RAW_HID=y~ and ~CONFIG_ZMK_STUDIO=y~ to the [[#kconfig-configuration][Kconfig configuration]], and the ~zzeneg/zmk-raw-hid/main~ and ~srwi/zmk-keypeek-layer-notifier/master~ [[#modules][modules]].
+
+For [[#workflow-builds][workflow builds]] using the [[#build-inputs][Build Inputs]] workflow, use ~raw_hid_adapter~ combined with the keyboard shield in the ~shield~ option, ~CONFIG_RAW_HID=y\nCONFIG_ZMK_STUDIO=y~ with the ~kconfig~ option, and ~zzeneg/zmk-raw-hid/main srwi/zmk-keypeek-layer-notifier/master~ with the ~modules~ option.
+
+For workflow builds using [[#build-examples][Build Example]] workflows, see the [[.github/workflows/build-example-keypeek.yml][Build Example KeyPeek]] workflow.
+
+For [[#local-builds][local builds]], make the changes locally.
+
+If the keyboard has been paired via Bluetooth before enabling Raw HID support, re-pairing may be necessary.
 
 
 *** Mouse Keys
